@@ -1,0 +1,4 @@
+% Mariusz Grebelski 46406344
+Q1 - 30 minutes - Learned how queries can be combined to get info about the world.
+Q2 - 30 minutes - Learned how you can axiomatize different statements based on true statements.
+Q3 - 30 minutes - Learned how to derive fail/success cases and show procedures of proofs.

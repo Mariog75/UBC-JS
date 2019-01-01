@@ -1,0 +1,48 @@
+% Mariusz Grebelski 46406344
+(a) “What dates in September are assignments due?”
+
+assignment(_,september,Y)
+
+Y=13 ;
+Y=20 ;
+Y=30
+
+(b) “What is the email of a TA of cs312 in 2018?” [Note that not all of the emails are for TAs.]
+
+ta(cs312,2018,X),email(X,Y).
+
+X = ainaz,
+Y = "ainaz@cs.ubc.ca" ;
+X = liran,
+Y = "liran.li@alumni.ubc.ca" ;
+X = rge,
+Y = "rge@cs.ubc.ca".
+
+(c) “What are the first names of two people have office hours on the same day?”
+
+office_hour(X,Z,_,_),office_hour(Y,Z,_,_),not(X=Y).
+
+X = davidp,
+Z = wednesday,
+Y = liran ;
+X = ainaz,
+Z = thursday,
+Y = rge ;
+X = liran,
+Z = wednesday,
+Y = davidp ;
+X = rge,
+Z = thursday,
+Y = ainaz ;
+
+(d) “Is there a TA who is not holding office hours?”
+
+office_hours(X,_,_,_),ta(_,_,not(X)),instructor(_,_,X).
+
+false.
+
+(e) What information would be required to compute number of classes before from exam? (You do not
+need to write any Prolog for this. Hint: try to compute it yourself and take notice of any information
+you required.)
+
+Need to know how many days there are in a particular month

@@ -1,0 +1,80 @@
+% Mariusz Grebelski 46406344
+(a)
+
+C = {}
+C = {wabe}
+C = {wabe, manxome}
+C = {wabe, manxome, outgrabe}
+C = {wabe, manxome, outgrabe, gimble}
+C = {wabe, manxome, outgrabe, gimble, gyre}
+C = {wabe, manxome, outgrabe, gimble, gyre, vorpal}
+C = {wabe, manxome, outgrabe, gimble, gyre, vorpal, toves}
+C = {wabe, manxome, outgrabe, gimble, gyre, vorpal, toves, slithy}
+
+(b)
+slithy :- toves, brillig.
+slithy :- manxome, brillig.
+slithy :- brillig.
+slithy :- jubjub.
+false.
+
+(c)
+slithy :- gyre, gimble, wabe.
+slithy :- manxome, gimble, wabe.
+slithy :- gimble, wabe.
+slithy :- outgrabe, wabe.
+slithy :- wabe.
+slithy :-
+true.
+
+(d)
+
+slithy -> toves -> brillig ->
+        |       <-          <-
+        v
+       -> gyre  -> gimble  -> wabe
+
+
+This box model shows that when slithy gets called, toves will be called, then brillig will be
+called, then brillig will fail and redo and gyre will be called, followed by gimble and wabe,
+and when wabe will exit as it does not fail
+
+[trace] 3 ?- slithy.
+   Call: (8) slithy ? creep
+   Call: (9) toves ? creep
+   Call: (10) outgrabe ? creep
+   Exit: (10) outgrabe ? creep
+   Call: (10) vorpal ? creep
+   Call: (11) manxome ? creep
+   Exit: (11) manxome ? creep
+   Exit: (10) vorpal ? creep
+   Exit: (9) toves ? creep
+   Call: (9) brillig ? creep
+   Call: (10) jubjub ? creep
+   Fail: (10) jubjub ? creep
+   Fail: (9) brillig ? creep
+   Redo: (9) toves ? creep
+   Call: (10) manxome ? creep
+   Exit: (10) manxome ? creep
+   Exit: (9) toves ? creep
+   Call: (9) brillig ? creep
+   Call: (10) jubjub ? creep
+   Fail: (10) jubjub ? creep
+   Fail: (9) brillig ? creep
+   Redo: (8) slithy ? creep
+   Call: (9) gyre ? creep
+   Call: (10) manxome ? creep
+   Exit: (10) manxome ? creep
+   Exit: (9) gyre ? creep
+   Call: (9) gimble ? creep
+   Call: (10) outgrabe ? creep
+   Exit: (10) outgrabe ? creep
+   Exit: (9) gimble ? creep
+   Call: (9) wabe ? creep
+   Exit: (9) wabe ? creep
+   Exit: (8) slithy ? creep
+true .
+
+(e)
+Upon calling trace, Prolog gave me one answer which was true. This was because it explored
+all possible outcomes until it found a true combination.
